@@ -1,0 +1,13 @@
+* {
+    /* aligns */
+    margin: 0;
+    padding: 0;
+
+    /* sizes */
+    box-sizing: border-box;
+}
+
+body, html{
+    /* sizes */
+    height: 100%;
+}
