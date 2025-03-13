@@ -1,0 +1,115 @@
+header {
+    /* sizes */
+    width: 100%;
+    height: 100%;
+
+    /* aligns */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#imgs {
+    /* sizes */
+    width: 100%;
+    padding: 20px 0;
+
+    /* aligns */
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.row{
+    /* aligns */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.card {
+    /* sizes */
+    border-radius: 20px;
+    height: 200px;
+
+    overflow: hidden;
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
+}
+
+.card:hover {
+    /* sizes */
+    border-radius: 5px;
+    transform: scale(115%);
+}
+
+.card > img {
+    /* sizes */
+    width: 400px;
+    height: 200px;
+    max-width: 90vw;
+
+    image-rendering: pixelated;
+}
+
+#buttons {
+    /* sizes */
+    width: 100%;
+    padding: 40px 10px;
+
+    /* aligns */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 2;
+}
+
+#buttons > button {
+    cursor: pointer;
+
+    /* colors */
+    background-color: black;
+    border: none;
+    color: white;
+
+    /* sizes */
+    padding: 10px 80px;
+    font-size: 50px;
+    border-radius: 20px;
+
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
+}
+
+#buttons > button:hover {
+    /* colors */
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#buttons > button.block{
+    /* colors */
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#counter {
+    /* aligns */
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -2;
+
+    /* sizes */
+    width: 100%;
+}
+
+#lines {
+    /* sizes */
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 10px;
+
+    /* colors */
+    background-color: rgb(31, 30, 41);
+    color: white;
+}
