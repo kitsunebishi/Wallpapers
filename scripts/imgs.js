@@ -1,23 +1,48 @@
 (async () => {
     const limit = 389
+    const extension = [".png", ".jpg", ".jpeg"];
+
+    const getExt = async (index) => {
+        const rp = "0".repeat(5 - `${index}`.length)
+        for (const e of extension) {
+            try {
+                const res = await fetch(`./images/${rp}${index}${e}`)
+                if (res.ok) return e
+            } catch (_) {}
+        }
+        return extension[0]
+    }
+
     const addImage = async (line) => {
         const imgs = document.getElementById('imgs')
 
         for (i = line; i<line+lines; i+=3){
             const rp = p => "0".repeat(5 - `${i+p}`.length)
-            imgs.innerHTML += `
+            
+            for (i=line; i<line+lines; i+=3){
+                // const rp = p => "0".repeat(5 - `${i+p}`.length)
+
+                const [ext0, ext1, ext2] = await Promise.all([
+                    getExt(i),
+                    getExt(i+1 < limit ? i+1 : i),
+                    getExt(i+2 < limit ? i+2 : i)
+                ])
+
+                
+                imgs.innerHTML += `
                 <div class="row">
-                    <div class="card">
-                        <img src="./images/${rp(0)}${i}.png" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="./images/${rp(1)}${i+1 < limit ? i+1 : i}.png" alt="">
-                    </div>
-                    <div class="card">
-                        <img src="./images/${rp(2)}${i+2 < limit ? i+2 : i}.png" alt="">
-                    </div>
+                <div class="card">
+                <img src="/images/${rp(0)}${i}${ext0}" alt="">
                 </div>
-            `
+                <div class="card">
+                <img src="/images/${rp(1)}${i+1 < limit ? i+1 : i}${ext1}" alt="">
+                </div>
+                <div class="card">
+                <img src="/images/${rp(2)}${i+2 < limit ? i+2 : i}${ext2}" alt="">
+                </div>
+                </div>
+                `
+            }
         }
     }
 
